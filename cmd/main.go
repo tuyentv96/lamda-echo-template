@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/tuyentv96/lamda-echo-template/handler"
+	"log"
 )
 
 var echoLambda *echoadapter.EchoLambda
@@ -19,6 +20,15 @@ func initHttp() {
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+
+	e.GET("/", func(c echo.Context) error {
+		return c.String(200, "hello")
+	})
+
+	e.GET("/ping", func(c echo.Context) error {
+		log.Println("Handler!!")
+		return c.String(200, "pong")
+	})
 
 	// Init article handler
 	handler.NewArticleHandler(e)
