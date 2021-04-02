@@ -10,6 +10,7 @@ Required: [Serverless framework](https://serverless.com/framework/docs/getting-s
 
 ```bash
 
+
 # First, we build project
 $ go mod download
 $ make build
